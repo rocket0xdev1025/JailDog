@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jail Dog | $JAIL</title>
+    <meta
+      name="description"
+      content="Jail Dog brings locked-up chaos, streetwise memes, and unstoppable energy to Arc. Buy $JAIL with Arc USDC."
+    />
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;500;600;700;800&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              kennel: "#0b0907",
+              yard: "#16110c",
+              steel: "#9aa3ad",
+              bar: "#c7ced6",
+              honey: "#e8b86d",
+              gold: "#f4c97a",
+              cream: "#f8e8c8",
+              amber: "#d49a4a",
+              muzzle: "#1a1210",
+            },
+            fontFamily: {
+              display: ["Bungee", "cursive"],
+              mugshot: ["Special Elite", "monospace"],
+              sans: ["Outfit", "sans-serif"],
+            },
+            boxShadow: {
+              glow: "0 0 40px rgba(232, 184, 109, 0.25)",
+              cell: "inset 0 0 0 1px rgba(199, 206, 214, 0.18), 0 20px 50px rgba(0,0,0,0.45)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --honey: #e8b86d;
+        --gold: #f4c97a;
+        --cream: #f8e8c8;
+        --amber: #d49a4a;
+        --steel: #9aa3ad;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: #0b0907;
+        color: var(--cream);
+      }
+
+      .site-bg {
+        background-image:
+          linear-gradient(180deg, rgba(11, 9, 7, 0.55) 0%, rgba(11, 9, 7, 0.82) 42%, #0b0907 100%),
+          url("banner.png");
+        background-size: cover;
+        background-position: center 28%;
+        background-attachment: fixed;
+      }
+
+      .mesh {
+        background-image:
+          linear-gradient(rgba(232, 184, 109, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(232, 184, 109, 0.05) 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+
+      .jail-bars {
+        background: repeating-linear-gradient(
+          90deg,
+          transparent 0 46px,
+          rgba(180, 188, 198, 0.16) 46px 56px
+        );
+        pointer-events: none;
+      }
+
+      .jail-bars-strong {
+        background: repeating-linear-gradient(
+          90deg,
+          transparent 0 34px,
+          rgba(199, 206, 214, 0.22) 34px 42px
+        );
+      }
+
+      .gold-text {
+        background: linear-gradient(180deg, #fff6e4 0%, #f4c97a 42%, #d49a4a 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 8px 30px rgba(232, 184, 109, 0.18);
+      }
+
+      .steel-frame {
+        box-shadow:
+          0 0 0 2px rgba(199, 206, 214, 0.35),
+          0 0 0 8px rgba(11, 9, 7, 0.8),
+          0 0 40px rgba(232, 184, 109, 0.18);
+      }
+
+      .rivet::before,
+      .rivet::after {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, #e8edf2, #6b737c 70%);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .rivet::before {
+        top: 10px;
+        left: 10px;
+      }
+
+      .rivet::after {
+        top: 10px;
+        right: 10px;
+      }
+
+      .ticker {
+        animation: ticker 28s linear infinite;
+      }
+
+      @keyframes ticker {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      @keyframes floaty {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes paw {
+        0% {
+          transform: translateY(0) rotate(-8deg);
+          opacity: 0.15;
+        }
+        50% {
+          opacity: 0.35;
+        }
+        100% {
+          transform: translateY(-40px) rotate(8deg);
+          opacity: 0.15;
+        }
+      }
+
+      .floaty {
+        animation: floaty 5s ease-in-out infinite;
+      }
+
+      .paw {
+        animation: paw 7s ease-in-out infinite;
+      }
+
+      .btn-gold {
+        background: linear-gradient(180deg, #f6d392 0%, #e8b86d 48%, #c8883a 100%);
+        color: #1a1210;
+        box-shadow: 0 10px 30px rgba(232, 184, 109, 0.28);
+      }
+
+      .btn-gold:hover {
+        filter: brightness(1.08);
+        transform: translateY(-1px);
+      }
+
+      .btn-steel {
+        background: linear-gradient(180deg, #d5dce3 0%, #9aa3ad 55%, #6d757e 100%);
+        color: #111;
+      }
+
+      .btn-steel:hover {
+        filter: brightness(1.08);
+        transform: translateY(-1px);
+      }
+
+      .cell-card {
+        background:
+          linear-gradient(180deg, rgba(232, 184, 109, 0.08), rgba(11, 9, 7, 0.92)),
+          #16110c;
+        border: 1px solid rgba(232, 184, 109, 0.22);
+      }
+
+      .cell-card:hover {
+        border-color: rgba(244, 201, 122, 0.55);
+        box-shadow: 0 0 36px rgba(232, 184, 109, 0.16);
+        transform: translateY(-4px);
+      }
+
+      .mugshot-lines {
+        background: repeating-linear-gradient(
+          180deg,
+          transparent 0 27px,
+          rgba(232, 184, 109, 0.12) 27px 28px
+        );
+      }
+
+      #dexscreener-embed {
+        position: relative;
+        width: 100%;
+        padding-bottom: 125%;
+      }
+
+      @media (min-width: 1024px) {
+        #dexscreener-embed {
+          padding-bottom: 62%;
+        }
+      }
+
+      #dexscreener-embed iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .toast {
+        transform: translateY(120%);
+        opacity: 0;
+        transition: all 0.35s ease;
+      }
+
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      @media (max-width: 768px) {
+        .site-bg {
+          background-attachment: scroll;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased overflow-x-hidden">
+    <div class="fixed inset-0 site-bg -z-20"></div>
+    <div class="fixed inset-0 mesh -z-10 opacity-70"></div>
+    <div class="fixed inset-0 jail-bars -z-10"></div>
+
+    <!-- Nav -->
+    <header class="sticky top-0 z-50 border-b border-honey/20 bg-kennel/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
+        <a href="#top" class="flex items-center gap-3">
+          <img
+            src="logo.png"
+            alt="Jail Dog logo"
+            class="h-12 w-12 rounded-full object-cover steel-frame"
+          />
+          <div class="leading-tight">
+            <p class="font-display text-lg tracking-wide text-gold">JAIL DOG</p>
+            <p class="font-mugshot text-xs text-honey/80">$JAIL · ARC</p>
+          </div>
+        </a>
+
+        <nav class="hidden items-center gap-7 text-sm font-semibold text-cream/80 md:flex">
+          <a href="#about" class="hover:text-gold">About</a>
+          <a href="#howto" class="hover:text-gold">How to Buy</a>
+          <a href="#chart" class="hover:text-gold">Chart</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            onclick="copyCA()"
+            class="hidden items-center gap-2 rounded-full border border-honey/30 bg-yard/80 px-3 py-2 text-xs font-semibold text-cream/90 hover:border-gold sm:flex"
+            title="Copy contract address"
+          >
+            <span class="font-mugshot tracking-wider">CA</span>
+            <span id="ca-nav" class="max-w-[88px] truncate text-honey">TBA</span>
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+          <a
+            href="https://x.com/JailDogArc"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="grid h-10 w-10 place-items-center overflow-hidden rounded-full border border-white/10 bg-black"
+            aria-label="Jail Dog on X"
+          >
+            <img src="x.png" alt="X" class="h-6 w-6 object-contain" />
+          </a>
+          <a
+            href="https://argus.world/token/TBA"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-gold rounded-full px-4 py-2 text-sm font-extrabold uppercase tracking-wide"
+          >
+            Buy Now
+          </a>
+          <button
+            id="menu-btn"
+            class="grid h-10 w-10 place-items-center rounded-full border border-honey/30 md:hidden"
+            aria-label="Open menu"
+          >
+            <span class="text-xl leading-none">☰</span>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="hidden border-t border-honey/20 bg-kennel px-4 py-4 md:hidden">
+        <div class="flex flex-col gap-3 font-semibold">
+          <a href="#about" class="py-1">About</a>
+          <a href="#howto" class="py-1">How to Buy</a>
+          <a href="#chart" class="py-1">Chart</a>
+          <a href="https://dexscreener.com/arc/TBA" target="_blank" rel="noopener noreferrer" class="py-1">Dexscreener</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Ticker -->
+    <div class="relative overflow-hidden border-b border-honey/20 bg-black/50 py-2">
+      <div class="ticker flex w-max gap-10 whitespace-nowrap font-mugshot text-sm text-gold">
+        <span>JAIL DOG • LOCKED-UP CHAOS • $JAIL ON ARC • STREETWISE MEMES • UNSTOPPABLE ENERGY • BUY WITH ARC USDC • THE PACK IS OUT •</span>
+        <span>JAIL DOG • LOCKED-UP CHAOS • $JAIL ON ARC • STREETWISE MEMES • UNSTOPPABLE ENERGY • BUY WITH ARC USDC • THE PACK IS OUT •</span>
+      </div>
+    </div>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="relative min-h-[92vh] overflow-hidden">
+        <div class="absolute inset-0">
+          <img src="banner.png" alt="Jail Dog behind bars" class="h-full w-full object-cover object-[center_30%]" />
+          <div class="absolute inset-0 bg-gradient-to-b from-kennel/40 via-kennel/55 to-kennel"></div>
+          <div class="absolute inset-0 jail-bars-strong mix-blend-soft-light"></div>
+        </div>
+
+        <div class="pointer-events-none absolute left-[8%] top-28 hidden paw opacity-30 lg:block">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="#e8b86d">
+            <circle cx="6" cy="7" r="2.1" />
+            <circle cx="11" cy="4.5" r="2.1" />
+            <circle cx="16.5" cy="6" r="2.1" />
+            <ellipse cx="12" cy="15.5" rx="6" ry="5" />
+          </svg>
+        </div>
+
+        <div class="relative mx-auto flex max-w-6xl flex-col items-center px-4 pb-20 pt-16 text-center md:pt-24">
+          <div class="floaty relative mb-7">
+            <div class="absolute -inset-3 rounded-full border-2 border-dashed border-honey/40"></div>
+            <img
+              src="logo.png"
+              alt="Jail Dog"
+              class="h-36 w-36 rounded-full object-cover steel-frame sm:h-44 sm:w-44"
+            />
+            <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full border border-honey/40 bg-kennel px-3 py-1 font-mugshot text-xs text-gold">
+              INMATE $JAIL
+            </span>
+          </div>
+
+          <p class="mb-3 font-mugshot text-sm tracking-[0.35em] text-gold/90">WANTED ON ARC</p>
+          <h1 class="font-display gold-text text-5xl leading-none sm:text-7xl md:text-8xl">JAIL DOG</h1>
+          <p class="mt-3 font-display text-2xl text-steel sm:text-3xl">$JAIL</p>
+          <p class="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-cream/90 sm:text-xl">
+            Jail Dog brings locked-up chaos, streetwise memes, and unstoppable energy to Arc.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="https://argus.world/token/TBA"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-gold rounded-full px-8 py-3 text-base font-extrabold uppercase tracking-wide"
+            >
+              Buy Now
+            </a>
+            <a
+              href="https://dexscreener.com/arc/TBA"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-steel rounded-full px-8 py-3 text-base font-extrabold uppercase tracking-wide"
+            >
+              Chart
+            </a>
+            <a
+              href="https://x.com/JailDogArc"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/70 px-5 py-3 font-bold text-white"
+            >
+              <img src="x.png" alt="" class="h-5 w-5" />
+              Follow
+            </a>
+          </div>
+
+          <div class="mt-8 w-full max-w-xl">
+            <div class="rivet relative rounded-2xl border border-honey/30 bg-black/55 px-4 py-4 backdrop-blur-md">
+              <p class="mb-2 font-mugshot text-xs uppercase tracking-[0.28em] text-honey/80">Contract Address</p>
+              <div class="flex items-center gap-3">
+                <code id="ca-display" class="flex-1 truncate text-left font-mugshot text-base text-gold sm:text-lg">TBA</code>
+                <button
+                  type="button"
+                  onclick="copyCA()"
+                  class="shrink-0 rounded-full bg-honey px-4 py-2 text-sm font-extrabold text-muzzle hover:brightness-110"
+                >
+                  Copy CA
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="relative py-20 md:py-28">
+        <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 md:grid-cols-[1.05fr_0.95fr] md:px-6">
+          <article class="rivet relative overflow-hidden rounded-3xl border border-honey/25 bg-yard/80 p-6 shadow-cell md:p-8">
+            <div class="absolute right-0 top-0 h-24 w-24 bg-gradient-to-bl from-honey/20 to-transparent"></div>
+            <p class="font-mugshot text-sm tracking-[0.3em] text-honey">CASE FILE</p>
+            <h2 class="mt-2 font-display text-3xl text-gold sm:text-4xl">LOCKED UP. NEVER DOWN.</h2>
+            <p class="mt-5 text-lg leading-relaxed text-cream/90">
+              Jail Dog brings locked-up chaos, streetwise memes, and unstoppable energy to Arc.
+              Born behind the bars, raised on kennel-floor grit, $JAIL is the pack’s favorite inmate —
+              cute enough to bait the guards, wild enough to break the chain.
+            </p>
+            <p class="mt-4 text-base leading-relaxed text-cream/70">
+              No quiet yard. No sitting pretty. Just golden fur, steel bars, and a meme that refuses parole.
+              The doghouse is on Arc. The currency is USDC. The sentence is forever.
+            </p>
+            <div class="mt-8 grid grid-cols-3 gap-3 text-center">
+              <div class="rounded-2xl border border-honey/20 bg-black/40 p-3">
+                <p class="font-display text-xl text-gold">$JAIL</p>
+                <p class="mt-1 text-[11px] uppercase tracking-wider text-cream/60">Symbol</p>
+              </div>
+              <div class="rounded-2xl border border-honey/20 bg-black/40 p-3">
+                <p class="font-display text-xl text-gold">ARC</p>
+                <p class="mt-1 text-[11px] uppercase tracking-wider text-cream/60">Chain</p>
+              </div>
+              <div class="rounded-2xl border border-honey/20 bg-black/40 p-3">
+                <p class="font-display text-xl text-gold">USDC</p>
+                <p class="mt-1 text-[11px] uppercase tracking-wider text-cream/60">Pair</p>
+              </div>
+            </div>
+          </article>
+
+          <aside class="relative mx-auto w-full max-w-md">
+            <div class="mugshot-lines rivet relative rounded-3xl border-4 border-steel/70 bg-black/70 p-5 shadow-glow">
+              <div class="mb-4 flex items-center justify-between font-mugshot text-xs text-gold">
+                <span>ARC KENNEL PD</span>
+                <span>NO. 5042</span>
+              </div>
+              <img src="logo.png" alt="Mugshot of Jail Dog" class="aspect-square w-full rounded-xl object-cover" />
+              <div class="mt-4 space-y-1 font-mugshot text-sm text-cream">
+                <p>NAME: JAIL DOG</p>
+                <p>ALIAS: $JAIL</p>
+                <p>CHARGE: UNSTOPPABLE ENERGY</p>
+                <p>STATUS: OUT ON MEMES</p>
+              </div>
+            </div>
+            <div class="pointer-events-none absolute -right-4 -top-4 h-full w-full rounded-3xl border border-honey/20"></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- How to Buy -->
+      <section id="howto" class="relative py-8 md:py-16">
+        <div class="mx-auto max-w-6xl px-4 md:px-6">
+          <div class="mb-12 text-center">
+            <p class="font-mugshot text-sm tracking-[0.35em] text-honey">VISITING HOURS</p>
+            <h2 class="mt-2 font-display text-4xl text-gold sm:text-5xl">HOW TO BUY</h2>
+            <p class="mx-auto mt-4 max-w-2xl text-cream/80">
+              Spring $JAIL with Arc USDC. Four steps, one kennel, zero excuses.
+            </p>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <article class="cell-card rivet relative rounded-3xl p-6 transition duration-300">
+              <div class="mb-5 flex items-center justify-between">
+                <span class="grid h-12 w-12 place-items-center rounded-xl bg-honey font-display text-xl text-muzzle">1</span>
+                <span class="font-mugshot text-xs text-steel">CELL A</span>
+              </div>
+              <h3 class="font-display text-xl text-gold">Grab a Wallet</h3>
+              <p class="mt-3 text-sm leading-relaxed text-cream/80">
+                Unlock an Arc-ready wallet like MetaMask. Add the Arc network so the kennel recognizes your keys.
+              </p>
+            </article>
+
+            <article class="cell-card rivet relative rounded-3xl p-6 transition duration-300">
+              <div class="mb-5 flex items-center justify-between">
+                <span class="grid h-12 w-12 place-items-center rounded-xl bg-honey font-display text-xl text-muzzle">2</span>
+                <span class="font-mugshot text-xs text-steel">CELL B</span>
+              </div>
+              <h3 class="font-display text-xl text-gold">Load Arc USDC</h3>
+              <p class="mt-3 text-sm leading-relaxed text-cream/80">
+                Fund the wallet with USDC on Arc. On this chain, USDC is both gas and the swap currency — no extra token to babysit.
+              </p>
+            </article>
+
+            <article class="cell-card rivet relative rounded-3xl p-6 transition duration-300">
+              <div class="mb-5 flex items-center justify-between">
+                <span class="grid h-12 w-12 place-items-center rounded-xl bg-honey font-display text-xl text-muzzle">3</span>
+                <span class="font-mugshot text-xs text-steel">CELL C</span>
+              </div>
+              <h3 class="font-display text-xl text-gold">Hit the Yard</h3>
+              <p class="mt-3 text-sm leading-relaxed text-cream/80">
+                Open Argus and go to the official $JAIL page. Copy the CA from this site and match it before you tap anything.
+              </p>
+            </article>
+
+            <article class="cell-card rivet relative rounded-3xl p-6 transition duration-300">
+              <div class="mb-5 flex items-center justify-between">
+                <span class="grid h-12 w-12 place-items-center rounded-xl bg-honey font-display text-xl text-muzzle">4</span>
+                <span class="font-mugshot text-xs text-steel">CELL D</span>
+              </div>
+              <h3 class="font-display text-xl text-gold">Swap & Walk</h3>
+              <p class="mt-3 text-sm leading-relaxed text-cream/80">
+                Swap Arc USDC for $JAIL, confirm the tx, and join the pack. Locked-up chaos is now in your wallet.
+              </p>
+            </article>
+          </div>
+
+          <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="https://argus.world/token/TBA"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-gold rounded-full px-8 py-3 font-extrabold uppercase"
+            >
+              Buy $JAIL Now
+            </a>
+            <button
+              type="button"
+              onclick="copyCA()"
+              class="rounded-full border border-honey/40 px-8 py-3 font-bold text-gold hover:bg-honey/10"
+            >
+              Copy CA
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chart -->
+      <section id="chart" class="relative py-20">
+        <div class="mx-auto max-w-6xl px-4 md:px-6">
+          <div class="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <p class="font-mugshot text-sm tracking-[0.35em] text-honey">YARD CAM</p>
+              <h2 class="mt-2 font-display text-4xl text-gold">LIVE CHART</h2>
+              <p class="mt-2 text-cream/75">Watch the breakout. Powered by Dexscreener on Arc.</p>
+            </div>
+            <a
+              href="https://dexscreener.com/arc/TBA"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-steel rounded-full px-6 py-3 text-sm font-extrabold uppercase"
+            >
+              Open Chart
+            </a>
+          </div>
+
+          <div class="rivet relative overflow-hidden rounded-3xl border border-honey/30 bg-black/70 p-2 shadow-cell sm:p-3">
+            <div class="mb-2 flex items-center justify-between px-2 py-1 font-mugshot text-[11px] text-steel">
+              <span>● REC · KENNEL CAM 01</span>
+              <span>DEXSCREENER / ARC</span>
+            </div>
+            <div id="dexscreener-embed">
+              <iframe
+                title="Jail Dog Dexscreener chart"
+                src="https://dexscreener.com/arc/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="relative border-t border-honey/20 bg-black/70 py-10">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 text-center md:flex-row md:text-left">
+        <div class="flex items-center gap-3">
+          <img src="logo.png" alt="" class="h-12 w-12 rounded-full object-cover steel-frame" />
+          <div>
+            <p class="font-display text-gold">JAIL DOG</p>
+            <p class="font-mugshot text-xs text-cream/60">Locked-up chaos on Arc.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="https://x.com/JailDogArc" target="_blank" rel="noopener noreferrer" class="grid h-11 w-11 place-items-center rounded-full bg-black ring-1 ring-white/15">
+            <img src="x.png" alt="X / Twitter" class="h-6 w-6" />
+          </a>
+          <a href="https://argus.world/token/TBA" target="_blank" rel="noopener noreferrer" class="btn-gold rounded-full px-5 py-2 text-sm font-extrabold uppercase">Buy Now</a>
+          <a href="https://dexscreener.com/arc/TBA" target="_blank" rel="noopener noreferrer" class="btn-steel rounded-full px-5 py-2 text-sm font-extrabold uppercase">Chart</a>
+        </div>
+      </div>
+      <p class="mt-8 text-center font-mugshot text-xs text-cream/40">
+        $JAIL is a meme. Not financial advice. Always verify the CA.
+      </p>
+    </footer>
+
+    <div id="toast" class="toast fixed bottom-6 left-1/2 z-[80] -translate-x-1/2 rounded-full bg-honey px-5 py-3 font-bold text-muzzle shadow-glow">
+      CA copied
+    </div>
+
+    <script>
+      const CA = "TBA";
+
+      function copyCA() {
+        const done = () => {
+          const toast = document.getElementById("toast");
+          toast.classList.add("show");
+          setTimeout(() => toast.classList.remove("show"), 1800);
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(CA).then(done).catch(fallbackCopy);
+        } else {
+          fallbackCopy();
+        }
+        function fallbackCopy() {
+          const area = document.createElement("textarea");
+          area.value = CA;
+          document.body.appendChild(area);
+          area.select();
+          document.execCommand("copy");
+          area.remove();
+          done();
+        }
+      }
+
+      document.getElementById("menu-btn").addEventListener("click", () => {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+      });
+
+      document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.getElementById("mobile-menu").classList.add("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>
